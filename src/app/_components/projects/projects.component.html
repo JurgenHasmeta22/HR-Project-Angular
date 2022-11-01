@@ -1,0 +1,75 @@
+<div class="wrapper-fillim">
+    <div class="form-approve" *ngIf="checkRolesToShowTable()">
+        <section>
+            <header className="header">
+                <h2>All Projects</h2>
+            </header>
+
+            <button (click)="onNewForm()">
+                Add new project
+            </button>
+
+            <table className="table-data">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody *ngFor="let project of allProjects">
+                    <tr className="post-item">
+                        <td>{{project.emriProjekt}}</td>
+                        <td>{{project.pershkrimProjekt}}</td>
+                        <td className="special-td">
+                            <button (click)="onEditForm(project.projektId)">
+                                Edit
+                            </button>
+
+                            <button (click)="deleteProject(project.projektId)">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <form class="projectFormNew" #projectFormNew="ngForm" (ngSubmit)="addProject()" autocomplete="off" *ngIf="showNew">
+        <div class="form-ask">
+            <h2>Add new project</h2>
+            <div class="form-group">
+                <label>Project Name: </label>
+                <input type="text" class="form-control" name="projectNameEdit" [(ngModel)]="model.emriProjekt">
+            </div>
+            <div class="form-group">
+                <label>Project Description: </label>
+                <input type="text" class="form-control" name="descriptionEdit" [(ngModel)]="model.pershkrimProjekt">
+            </div>
+            <div class="form-check">
+                <div class="text-center button-check-group">
+                    <button class="btn btn-success mr-2" type="submit">Create Project</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form class="projectFormEdit" #projectFormEdit="ngForm" (ngSubmit)="updateProject()" autocomplete="off" *ngIf="showEdit">
+        <div class="form-ask">
+            <h2>Edit project</h2>
+            <div class="form-group">
+                <label>Project Name: </label>
+                <input type="text" class="form-control" name="projectNameAdd" [(ngModel)]="model.emriProjekt">
+            </div>
+            <div class="form-group">
+                <label>Project Description: </label>
+                <input type="text" class="form-control" name="descriptionAdd" [(ngModel)]="model.pershkrimProjekt">
+            </div>
+            <div class="form-check">
+                <div class="text-center button-check-group">
+                    <button class="btn btn-success mr-2" type="submit">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

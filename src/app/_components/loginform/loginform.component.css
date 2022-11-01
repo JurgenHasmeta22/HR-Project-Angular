@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  margin-top: 10%;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login {
+  width: 400px;
+  height: 360px;
+  padding: 20px;
+  background: #212529;
+}
+
+.login form {
+  font-size: 20px;
+  height: min-content;
+}
+
+.login form .form-group {
+  margin-bottom: 12px;
+  height: 100px;
+  color: white;
+}
+
+.btn {
+  margin-top: 30px;
+  height: 40px;
+  width: 360px;
+  font-size: 20px;
+  margin-top: 20;
+}
+
+.form-control {
+  height: 35px;
+  margin-top: 5px;
+  background-color: white;
+}

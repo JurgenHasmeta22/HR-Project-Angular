@@ -1,0 +1,27 @@
+<div class="container" *ngIf="(accountService.currentUser$ | async) === null">
+  <div class="login">
+    <form #loginForm="ngForm" class="needs-validation" (ngSubmit)="login()" autocomplete="off">
+      <div class="form-group was-validated">
+        <label class="form-label" for="username">Username</label>
+        <input name="userName" [(ngModel)]="model.userName" class="form-control" type="username" id="username"
+          required />
+        <div class="invalid-feedback">Please enter your username</div>
+      </div>
+      <div class="form-group was-validated">
+        <label class="form-label" for="password">Password</label>
+        <input name="Password" [(ngModel)]="model.Password" class="form-control" type="password" id="password"
+          required />
+        <div class="invalid-feedback">Please enter your password</div>
+      </div>
+      <input class="btn btn-success" type="submit" value="Sign In" />
+    </form>
+  </div>
+</div>
+
+<div *ngIf="accountService.currentUser$ | async" class="container">
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <app-homepage></app-homepage>
+    </div>
+  </div>
+</div>

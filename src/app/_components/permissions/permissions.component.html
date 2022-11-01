@@ -1,0 +1,76 @@
+<div class="wrapper-fillim">
+    <!-- <form class="permissionForm" #permissionForm="ngForm" (ngSubmit)="askPermission()" autocomplete="off">
+        <div class="form-ask" *ngIf="checkRolesToShowForm()">
+            <h2 class="text-center text-primary">Permissions</h2>
+            <h2>Ask permission</h2>
+            <div class="form-group">
+                <label>Date start: </label>
+                <input type="date" class="form-control" name="dataStart" [(ngModel)]="model.DataFillim">
+            </div>
+            <div class="form-group">
+                <label>Date end: </label>
+                <input type="date" class="form-control" name="dataEnd" [(ngModel)]="model.DataMbarim">
+            </div>
+            <div class="form-group">
+                <label>Permission type: </label>
+                <input type="text" class="form-control" name="permissionType" [(ngModel)]="model.TipiLeje">
+            </div>
+            <div class="form-check">
+                <div class="text-center button-check-group">
+                    <button class="btn btn-success mr-2" type="submit">Ask permission</button>
+                    <button class="btn btn-success mr-2" (click)="cancel()" type="submit">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <span>Total amount of days left: {{getBalancaLeje()}}</span>
+    </form> -->
+    <app-permissions-form 
+        (askPermission)="askPermission()" 
+        (checkRolesToShowForm)="checkRolesToShowForm()"
+        (getBalancaLeje)="getBalancaLeje()" 
+        (cancel)="cancel()" 
+        [model]="model"
+        [person]="person"
+        [toShowForm]="toShowForm">
+    </app-permissions-form>
+    <div class="form-approve" *ngIf="checkRolesToShowTable()">
+        <section>
+            <header className="header">
+                <h2>Pending permissions</h2>
+            </header>
+
+            <table className="table-data">
+                <thead>
+                    <tr>
+                        <!-- <th>Id</th> -->
+                        <th>Start date</th>
+                        <th>End date</th>
+                        <th>Type</th>
+                        <th>Username</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody *ngFor="let permission of allPermissions">
+                    <tr className="post-item">
+                        <!-- <td>{{permission.lejeId}}</td> -->
+                        <td>{{permission.dataFillim}}</td>
+                        <td>{{permission.dataMbarim}}</td>
+                        <td>{{permission.tipiLeje}}</td>
+                        <td>{{permission.user.userName}}</td>
+                        <td>pending</td>
+                        <td className="special-td">
+                            <button (click)="approveLeje(permission.lejeId)">
+                                Approve
+                            </button>
+
+                            <button (click)="disapproveLeje(permission.lejeId)">
+                                Disapprove
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>
